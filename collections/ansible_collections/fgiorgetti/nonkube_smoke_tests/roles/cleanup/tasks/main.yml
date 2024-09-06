@@ -1,11 +1,11 @@
 - name: Remove Skupper sites
   ansible.builtin.import_tasks: remove.yml
-  tags: [ always ]
+  tags: [always]
 
 - name: Cleanup workloads
   ansible.builtin.import_tasks: workloads-cleanup.yml
-  tags: [ always ]
+  tags: [always]
 
 - name: Cleanup Custom resources
   ansible.builtin.import_tasks: customresources-cleanup.yml
-  tags: [ always ]
+  tags: [always]
