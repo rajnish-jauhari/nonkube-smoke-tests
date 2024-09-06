@@ -1,0 +1,3 @@
+- name: Enabling podman endpoint
+  ansible.builtin.command: "{{ item }}"
+  loop: "{{ ce_commands }}"

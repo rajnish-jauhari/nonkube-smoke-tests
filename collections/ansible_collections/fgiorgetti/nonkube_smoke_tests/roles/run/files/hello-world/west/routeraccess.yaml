@@ -1,0 +1,13 @@
+apiVersion: skupper.io/v1alpha1
+kind: RouterAccess
+metadata:
+  name: go-west
+  namespace: west
+spec:
+  roles:
+    - port: 55671
+      name: inter-router
+    - port: 45671
+      name: edge
+  bindHost: 127.0.0.1
+

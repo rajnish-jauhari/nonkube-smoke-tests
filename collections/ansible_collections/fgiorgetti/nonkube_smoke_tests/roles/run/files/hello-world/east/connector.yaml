@@ -1,0 +1,10 @@
+apiVersion: skupper.io/v1alpha1
+kind: Connector
+metadata:
+  name: backend
+  namespace: east
+spec:
+  host: 127.0.0.1
+  port: 9090
+  routingKey: backend-8080
+

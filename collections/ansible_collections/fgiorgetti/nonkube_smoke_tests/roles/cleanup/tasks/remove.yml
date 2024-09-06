@@ -1,0 +1,15 @@
+- name: Copying remove.sh command
+  ansible.builtin.copy:
+    src: commands/remove.sh
+    dest: hello-world/
+    mode: preserve
+
+- name: Removing Skupper sites
+  ansible.builtin.command:
+    argv:
+      - "hello-world/remove.sh"
+      - "{{ item }}"
+  loop:
+    - "east"
+    - "west"
+  register: _remove

@@ -1,0 +1,7 @@
+- name: Installing hello-world custom resources
+  ansible.builtin.copy:
+    src: hello-world
+    dest: ./
+    owner: "{{ ansible_user }}"
+    mode: preserve
+    force: true

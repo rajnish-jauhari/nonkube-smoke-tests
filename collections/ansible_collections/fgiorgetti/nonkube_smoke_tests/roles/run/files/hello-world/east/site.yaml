@@ -1,0 +1,5 @@
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: east

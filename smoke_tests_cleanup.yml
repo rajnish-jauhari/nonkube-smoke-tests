@@ -1,0 +1,16 @@
+---
+- name: Cleanup nonkube smoke test as cloud-user
+  hosts: rootless
+  tasks:
+    - name: Cleanup rootless smoke tests
+      ansible.builtin.include_role:
+        name: fgiorgetti.nonkube_smoke_tests.cleanup
+      tags: [ always ]
+
+- name: Cleanup rootful smoke tests
+  hosts: rootful
+  tasks:
+    - name: Cleanup rootful smoke tests
+      ansible.builtin.include_role:
+        name: fgiorgetti.nonkube_smoke_tests.cleanup
+      tags: [ always ]

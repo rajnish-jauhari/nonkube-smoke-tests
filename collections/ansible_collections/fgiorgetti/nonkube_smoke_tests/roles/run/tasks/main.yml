@@ -1,0 +1,22 @@
+- name: "Starting smoke test using {{ run_command }} with {{ run_platform }}"
+  ansible.builtin.debug:
+    msg: "Starting smoke test using {{ run_command }} with {{ run_platform }}"
+
+- name: Custom resources
+  ansible.builtin.import_tasks: customresources.yml
+
+- name: Enable container engine endpoints
+  ansible.builtin.import_tasks: containerengine.yml
+
+- name: Run workloads
+  ansible.builtin.import_tasks: workloads-setup.yml
+
+- name: Bootstrap sites
+  ansible.builtin.import_tasks: bootstrap.yml
+
+- name: Test backend accessible through Skupper
+  ansible.builtin.import_tasks: validate.yml
+
+- name: Cleanup
+  ansible.builtin.include_role:
+    name: fgiorgetti.nonkube_smoke_tests.cleanup

@@ -1,0 +1,4 @@
+- name: Cleaning up hello-world custom resources
+  ansible.builtin.file:
+    path: hello-world
+    state: absent

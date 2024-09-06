@@ -1,0 +1,5 @@
+---
+ansible_user: cloud-user
+link_path: /home/cloud-user/.local/share/skupper/namespaces/west/runtime/link
+ce_commands:
+  - systemctl --user enable --now podman.socket

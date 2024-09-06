@@ -1,0 +1,36 @@
+- name: Copying bootstrap command
+  ansible.builtin.copy:
+    src: commands/{{ run_command }}
+    dest: hello-world/
+    mode: preserve
+
+- name: Bootstrap west site using {{ run_command }} with {{ run_platform }}
+  ansible.builtin.command:
+    argv:
+      - "hello-world/{{ run_command }}"
+      - "-p"
+      - "./hello-world/west"
+  environment:
+    SKUPPER_PLATFORM: "{{ run_platform }}"
+
+- name: Copying link to east site
+  ansible.builtin.copy:
+    src: "{{ link_path }}/link-go-west.yaml"
+    dest: hello-world/east/
+    mode: preserve
+    remote_src: true
+
+- name: Update namespace in east link to west
+  ansible.builtin.replace:
+    path: hello-world/east/link-go-west.yaml
+    regexp: 'namespace: west'
+    replace: 'namespace: east'
+
+- name: Bootstrap east site using {{ run_command }} with {{ run_platform }}
+  ansible.builtin.command:
+    argv:
+      - "hello-world/{{ run_command }}"
+      - "-p"
+      - "./hello-world/east"
+  environment:
+    SKUPPER_PLATFORM: "{{ run_platform }}"
