@@ -4,7 +4,7 @@
     dest: hello-world/
     mode: preserve
 
-- name: Bootstrap west site using {{ run_command }} with {{ run_platform }}
+- name: Bootstrap west site using {{ run_command + ' with ' + run_platform }}
   ansible.builtin.command:
     argv:
       - "hello-world/{{ run_command }}"
@@ -12,6 +12,8 @@
       - "./hello-world/west"
   environment:
     SKUPPER_PLATFORM: "{{ run_platform }}"
+  register: _bootstrap
+  changed_when: not _bootstrap.failed
 
 - name: Copying link to east site
   ansible.builtin.copy:
@@ -26,7 +28,7 @@
     regexp: 'namespace: west'
     replace: 'namespace: east'
 
-- name: Bootstrap east site using {{ run_command }} with {{ run_platform }}
+- name: Bootstrap east site using {{ run_command + ' with ' + run_platform }}
   ansible.builtin.command:
     argv:
       - "hello-world/{{ run_command }}"
@@ -34,3 +36,5 @@
       - "./hello-world/east"
   environment:
     SKUPPER_PLATFORM: "{{ run_platform }}"
+  register: _bootstrap
+  changed_when: not _bootstrap.failed

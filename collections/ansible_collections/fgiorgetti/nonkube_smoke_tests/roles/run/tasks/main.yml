@@ -1,4 +1,4 @@
-- name: "Starting smoke test using {{ run_command }} with {{ run_platform }}"
+- name: Starting smoke test using {{ run_command + ' with ' + run_platform }}
   ansible.builtin.debug:
     msg: "Starting smoke test using {{ run_command }} with {{ run_platform }}"
 

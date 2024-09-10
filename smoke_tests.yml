@@ -12,7 +12,7 @@
     - name: Cleanup rootless smoke tests
       ansible.builtin.include_role:
         name: fgiorgetti.nonkube_smoke_tests.cleanup
-      tags: [ always ]
+      tags: [always]
 
 - name: Nonkube smoke test as root
   hosts: rootful
@@ -27,4 +27,4 @@
     - name: Cleanup rootful smoke tests
       ansible.builtin.include_role:
         name: fgiorgetti.nonkube_smoke_tests.cleanup
-      tags: [ always ]
+      tags: [always]

@@ -12,4 +12,4 @@
     - name: Cleanup rootless smoke tests
       ansible.builtin.include_role:
         name: fgiorgetti.nonkube_smoke_tests.cleanup
-      tags: [ always ]
+      tags: [always]

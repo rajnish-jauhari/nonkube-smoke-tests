@@ -10,4 +10,3 @@ spec:
     - port: 45671
       name: edge
   bindHost: 127.0.0.1
-

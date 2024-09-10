@@ -13,3 +13,4 @@
     - "east"
     - "west"
   register: _remove
+  changed_when: not _remove.failed
