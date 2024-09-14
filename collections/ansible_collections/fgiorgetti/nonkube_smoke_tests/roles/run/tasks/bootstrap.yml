@@ -10,6 +10,8 @@
       - "hello-world/{{ run_command }}"
       - "-p"
       - "./hello-world/west"
+      - "-n"
+      - "west"
   environment:
     SKUPPER_PLATFORM: "{{ run_platform }}"
   register: _bootstrap
@@ -17,7 +19,7 @@
 
 - name: Copying link to east site
   ansible.builtin.copy:
-    src: "{{ link_path }}/link-go-west.yaml"
+    src: "{{ link_path }}/link-go-west-127.0.0.1.yaml"
     dest: hello-world/east/
     mode: preserve
     remote_src: true
@@ -34,6 +36,8 @@
       - "hello-world/{{ run_command }}"
       - "-p"
       - "./hello-world/east"
+      - "-n"
+      - "east"
   environment:
     SKUPPER_PLATFORM: "{{ run_platform }}"
   register: _bootstrap

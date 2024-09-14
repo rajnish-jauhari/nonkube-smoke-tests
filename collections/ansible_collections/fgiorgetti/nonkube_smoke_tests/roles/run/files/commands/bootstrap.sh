@@ -2,7 +2,7 @@
 
 set -Ceu
 
-IMAGE="quay.io/skupper/bootstrap"
+IMAGE="quay.io/skupper/bootstrap:v2-latest"
 export INPUT_PATH=""
 export NAMESPACE=""
 export FORCE_FLAG=""
@@ -120,8 +120,7 @@ create_service() {
         systemctl daemon-reload
     else
         if [ ! -d "${SERVICE_DIR}" ]; then
-            echo "Unable to define path to SystemD service"
-            return
+            mkdir -p "${SERVICE_DIR}"
         fi
         cp -f "${service_file}" "${SERVICE_DIR}"
         systemctl --user enable --now "${service_name}"
@@ -130,9 +129,11 @@ create_service() {
 }
 
 usage() {
-    echo "Use: bootstrap.sh [-p <path>] [-n <namespace>]"
+    echo "Use: bootstrap.sh [-p <path>] [-n <namespace>] [-b strategy] [-f]"
     echo "     -p Custom resources location on the file system"
     echo "     -n The target namespace used for installation (overrides the namespace from custom resources when -p is provided)"
+    echo "     -b The bundle strategy to be produced: bundle or tarball"
+    echo "     -f Forces to overwrite an existing namespace"
     exit 1
 }
 
