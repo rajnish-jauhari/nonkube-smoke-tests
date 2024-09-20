@@ -9,6 +9,7 @@ runs:
       run: |
         wget https://github.com/skupperproject/skupper/archive/refs/tags/v2-release.zip
         unzip v2-release
+        ls -l
     - id: "install-go"
       shell: bash
       run: |
@@ -16,12 +17,12 @@ runs:
     - id: "build-bootstrap"
       shell: bash
       run: |
-        cd skupper-v2
+        cd skupper-2-release
         make build-bootstrap
     - id: "install-bootstrap"
       shell: bash
       run: |
-        cd skupper-v2
+        cd skupper-2-release
         sudo install bootstrap cmd/bootstrap/{bootstrap,remove}.sh /usr/local/bin
         install bootstrap cmd/bootstrap/bootstrap.sh collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/run/files/commands/
         install cmd/bootstrap/bootstrap.sh collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/cleanup/files/commands/
