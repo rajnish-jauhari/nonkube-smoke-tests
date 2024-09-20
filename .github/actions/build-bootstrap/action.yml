@@ -24,5 +24,5 @@ runs:
       run: |
         cd skupper-2-release
         sudo install bootstrap cmd/bootstrap/{bootstrap,remove}.sh /usr/local/bin
-        install bootstrap cmd/bootstrap/bootstrap.sh collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/run/files/commands/
-        install cmd/bootstrap/bootstrap.sh collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/cleanup/files/commands/
+        install bootstrap cmd/bootstrap/bootstrap.sh ../collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/run/files/commands/
+        install cmd/bootstrap/bootstrap.sh ../collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/cleanup/files/commands/
