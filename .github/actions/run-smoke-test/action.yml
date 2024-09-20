@@ -1,0 +1,14 @@
+name: "Run smoke tests"
+description: "Runs the smoke tests using Ansible against the local runner"
+author: "fgiorgetti@gmail.com"
+runs:
+  using: "composite"
+  steps:
+    - id: "install-ansible"
+      shell: "bash"
+      run: |
+        sudo python3 -m pip install ansible --break-system-packages
+    - id: "run-smoke-tests"
+      shell: "bash"
+      run: |
+        ansible-playbook -v smoke_tests_cleanup.yml

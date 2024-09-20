@@ -15,3 +15,14 @@ on:  # yamllint disable-line rule:truthy
 jobs:
   ansible-lint:
     uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
+
+  smoke-tests:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Builds and installs the skupper-router
+        uses: ./.github/actions/build-router
+      - name: Builds and installs the bootstrap code
+        uses: ./.github/actions/build-bootstrap
+      - name: Runs the Smoke Tests
+        uses: ./.github/actions/run-smoke-test

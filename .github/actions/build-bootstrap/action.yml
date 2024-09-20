@@ -1,0 +1,27 @@
+name: "Build bootstrap"
+description: "Builds the Skupper V2 bootstrap binary"
+author: "fgiorgetti@gmail.com"
+runs:
+  using: "composite"
+  steps:
+    - id: "download-v2-code"
+      shell: bash
+      run: |
+        wget https://github.com/skupperproject/skupper/archive/refs/tags/v2-release.zip
+        unzip v2-release
+    - id: "install-go"
+      shell: bash
+      run: |
+        sudo apt -y install golang-1.21
+    - id: "build-bootstrap"
+      shell: bash
+      run: |
+        cd skupper-v2
+        make build-bootstrap
+    - id: "install-bootstrap"
+      shell: bash
+      run: |
+        cd skupper-v2
+        sudo install bootstrap cmd/bootstrap/{bootstrap,remove}.sh /usr/local/bin
+        install bootstrap cmd/bootstrap/bootstrap.sh collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/run/files/commands/
+        install cmd/bootstrap/bootstrap.sh collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/cleanup/files/commands/
