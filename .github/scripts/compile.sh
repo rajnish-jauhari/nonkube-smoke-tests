@@ -166,4 +166,3 @@ sudo python3 -m pip install --disable-pip-version-check --ignore-installed --pre
 
 sudo cmake --install "${SKUPPER_BUILD_DIR}"
 #endregion qpid-proton and skupper-router
-`
