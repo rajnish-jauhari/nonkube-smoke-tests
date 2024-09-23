@@ -11,7 +11,8 @@ runs:
     - id: "install-docker-podman"
       shell: "bash"
       run: |
-        sudo apt -y install docker.io podman
+        sudo apt -y install podman
+        sudo snap install docker
         sudo usermod -a -G docker `id -un`
     - id: "run-smoke-tests"
       shell: "bash"
