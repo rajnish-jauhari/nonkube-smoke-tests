@@ -55,9 +55,9 @@ The execution is mean to cover the following matrix:
 
 * The participant hosts must have the following tools installed and ready to use:
   * Podman
-  * Docker (cloud-user must have permission to manage containers)
+  * Docker (non root user must have permission to manage containers)
   * Skupper router (built from sources or installed using RPM)
-  * Your user must be able to log in as both root and cloud-user against all hosts
+  * Your user must be able to log in as both root and non root user against all hosts
 
 ## Included content/ Directory Structure
 

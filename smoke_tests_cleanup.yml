@@ -1,5 +1,5 @@
 ---
-- name: Cleanup nonkube smoke test as cloud-user
+- name: Cleanup nonkube smoke test as non-root
   hosts: rootless
   tasks:
     - name: Cleanup rootless smoke tests
