@@ -8,7 +8,12 @@ runs:
       shell: "bash"
       run: |
         sudo python3 -m pip install ansible
+    - id: "install docker and podman"
+      shell: "bash"
+      run: |
+        sudo apt -y install docker.io podman
+        sudo usermod -a -G docker `id -un`
     - id: "run-smoke-tests"
       shell: "bash"
       run: |
-        ansible-playbook -v smoke_tests_cleanup.yml
+        ansible-playbook -v smoke_tests.yml
