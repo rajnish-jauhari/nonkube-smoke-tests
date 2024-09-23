@@ -135,8 +135,8 @@ do_patch () {
 do_patch "patches/proton" "${PROTON_DIR}"
 
 # This is required to install the python packages that the system tests use.
-sudo python3 -m pip install --upgrade -r "${SKUPPER_DIR}"/requirements-dev.txt --break-system-packages
-sudo python3 -m pip install --upgrade -r "${PROTON_DIR}"/python/ci_requirements.txt --break-system-packages
+sudo python3 -m pip install --upgrade -r "${SKUPPER_DIR}"/requirements-dev.txt --break-system-packages --ignore-installed
+sudo python3 -m pip install --upgrade -r "${PROTON_DIR}"/python/ci_requirements.txt --break-system-packages --ignore-installed
 
 cmake -S "${PROTON_DIR}" -B "${PROTON_BUILD_DIR}" \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -149,7 +149,7 @@ cmake -S "${PROTON_DIR}" -B "${PROTON_BUILD_DIR}" \
 cmake --build "${PROTON_BUILD_DIR}" --verbose
 sudo cmake --install "$PROTON_BUILD_DIR"
 
-sudo python3 -m pip install "$(find "$PROTON_BUILD_DIR/python/dist" -name 'python_qpid_proton*.whl')" --break-system-packages
+sudo python3 -m pip install "$(find "$PROTON_BUILD_DIR/python/dist" -name 'python_qpid_proton*.whl')" --break-system-packages --ignore-installed
 
 cmake -S "${SKUPPER_DIR}" -B "${SKUPPER_BUILD_DIR}" \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
