@@ -1,5 +1,5 @@
 ---
-- name: Nonkube smoke test as non-root 
+- name: Nonkube smoke test as nonroot
   hosts: rootless
   tasks:
     - name: Run rootless smoke tests
