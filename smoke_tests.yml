@@ -10,8 +10,6 @@
         run_platform: "{{ item.platform }}"
       loop: "{{ matrix }}"
     - name: Cleanup rootless smoke tests
-      banana.nanica.peteca:
-    - name: Cleanup rootless smoke tests
       ansible.builtin.include_role:
         name: fgiorgetti.nonkube_smoke_tests.cleanup
       tags: [always]
