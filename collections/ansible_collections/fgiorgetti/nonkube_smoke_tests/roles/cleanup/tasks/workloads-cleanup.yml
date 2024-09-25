@@ -1,11 +1,11 @@
 - name: Stop and remove the frontend application
-  community.docker.docker_container:
+  community.general.docker_container:
     name: frontend
     state: absent
     force_kill: true
 
 - name: Stop and remove the backend application
-  community.docker.docker_container:
+  community.general.docker_container:
     name: backend
     state: absent
     force_kill: true

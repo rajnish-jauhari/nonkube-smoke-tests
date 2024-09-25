@@ -1,5 +1,5 @@
 - name: Running the frontend application
-  community.docker.docker_container:
+  community.general.docker_container:
     name: frontend
     recreate: true
     auto_remove: true
@@ -10,7 +10,7 @@
       - "--backend=http://host.containers.internal:8080"
 
 - name: Running the backend application
-  community.docker.docker_container:
+  community.general.docker_container:
     name: backend
     recreate: true
     auto_remove: true
