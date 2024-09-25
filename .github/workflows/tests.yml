@@ -15,12 +15,17 @@ on:  # yamllint disable-line rule:truthy
     - cron: '0 0 * * *'
 
 jobs:
+  ansible-lint:
+    name: Ansible lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ansible/ansible-lint-action@main
+        name: Run ansible-lint
+
   smoke-tests:
     name: Smoke Tests
     runs-on: ubuntu-24.04
     steps:
-      - uses: ansible/ansible-lint-action@main
-        name: Run ansible-lint
       - uses: actions/checkout@v4
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
