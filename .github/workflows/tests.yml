@@ -19,12 +19,12 @@ jobs:
     name: Smoke Tests
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
       - uses: ansible/ansible-lint@main
         name: Run ansible-lint
         with:
-          working_directory: "../"
+          working_directory: "."
           requirements_file: "./.github/scripts/requirements.yml"
+      - uses: actions/checkout@v4
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
       - name: Builds and installs the bootstrap code
