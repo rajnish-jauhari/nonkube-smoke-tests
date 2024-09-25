@@ -6,7 +6,7 @@
 Skupper V2 nonkube smoke tests using Ansible.
 Runs the hello-world example using only nonkube platforms.
 
-The execution is mean to cover the following matrix when running locally (using inventory-local):
+The execution is meant to cover the following matrix when running locally (using inventory-local):
 
 |Command     |OS        |User    |Platform|
 |------------|----------|--------|--------|
