@@ -22,8 +22,7 @@ jobs:
       - uses: ansible/ansible-lint@main
         name: Run ansible-lint
         with:
-          working_directory: "."
-          requirements_file: "./.github/scripts/requirements.yml"
+          args: ".ansible-lint"
       - uses: actions/checkout@v4
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
