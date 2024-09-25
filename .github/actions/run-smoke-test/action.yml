@@ -17,4 +17,4 @@ runs:
     - id: "run-smoke-tests"
       shell: "bash"
       run: |
-        ansible-playbook -v smoke_tests.yml
+        ansible-playbook -v smoke_tests_rootless.yml

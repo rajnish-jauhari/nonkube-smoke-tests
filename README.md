@@ -10,33 +10,21 @@ The execution is mean to cover the following matrix:
 | bootstrap | fedora39 | rootless | podman |
 | bootstrap | fedora39 | rootless | docker |
 | bootstrap | fedora39 | rootless | systemd |
-| bootstrap | fedora39 | root | docker |
-| bootstrap | fedora39 | root | systemd |
 | bootstrap | rhel9 | rootless | podman |
 | bootstrap | rhel9 | rootless | docker |
 | bootstrap | rhel9 | rootless | systemd |
-| bootstrap | rhel9 | root | docker |
-| bootstrap | rhel9 | root | systemd |
 | bootstrap | ubuntu2304 | rootless | podman |
 | bootstrap | ubuntu2304 | rootless | docker |
 | bootstrap | ubuntu2304 | rootless | systemd |
-| bootstrap | ubuntu2304 | root | docker |
-| bootstrap | ubuntu2304 | root | systemd |
 | bootstrap.sh | fedora39 | rootless | podman |
 | bootstrap.sh | fedora39 | rootless | docker |
 | bootstrap.sh | fedora39 | rootless | systemd |
-| bootstrap.sh | fedora39 | root | docker |
-| bootstrap.sh | fedora39 | root | systemd |
 | bootstrap.sh | rhel9 | rootless | podman |
 | bootstrap.sh | rhel9 | rootless | docker |
 | bootstrap.sh | rhel9 | rootless | systemd |
-| bootstrap.sh | rhel9 | root | docker |
-| bootstrap.sh | rhel9 | root | systemd |
 | bootstrap.sh | ubuntu2304 | rootless | podman |
 | bootstrap.sh | ubuntu2304 | rootless | docker |
 | bootstrap.sh | ubuntu2304 | rootless | systemd |
-| bootstrap.sh | ubuntu2304 | root | docker |
-| bootstrap.sh | ubuntu2304 | root | systemd |
 
 **Notes:**
 
@@ -51,10 +39,11 @@ The execution is mean to cover the following matrix:
 * All hosts must be updated accordingly under `inventory/hosts.yml`
 
 * The participant hosts must have the following tools installed and ready to use:
-  * Podman (does not run in rootful mode in CI as there are some issues managing podman containers using sudo)
+  * Podman (does not run in rootful mode as there are some issues managing podman containers using sudo)
   * Docker (non root user must have permission to manage containers)
   * Skupper router (built from sources or installed using RPM)
   * Your user must be able to log in as both root and non root user against all hosts
+  * Rootful tests disabled in CI as we are unable to write to /usr and /etc
 
 ## Included content/ Directory Structure
 
