@@ -12,5 +12,7 @@
   loop:
     - "east"
     - "west"
+  retries: 3
+  delay: 5
   register: _remove
   changed_when: not _remove.failed
