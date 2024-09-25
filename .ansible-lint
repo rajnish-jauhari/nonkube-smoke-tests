@@ -1,2 +1,2 @@
 mock_modules:
-  - docker_container
+  - community.general.docker_container
