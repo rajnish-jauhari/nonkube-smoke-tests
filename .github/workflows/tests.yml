@@ -16,11 +16,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   ansible-lint:
-    name: Ansible lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ansible/ansible-lint-action@main
-        name: Run ansible-lint
+    uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
 
   smoke-tests:
     name: Smoke Tests
