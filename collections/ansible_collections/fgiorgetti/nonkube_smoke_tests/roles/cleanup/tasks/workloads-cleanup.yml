@@ -1,9 +1,9 @@
 - name: Stop and remove the frontend application
-  docker_container:
+  community.docker.docker_container:
     name: frontend
     state: absent
 
 - name: Stop and remove the backend application
-  docker_container:
+  community.docker.docker_container:
     name: backend
     state: absent
