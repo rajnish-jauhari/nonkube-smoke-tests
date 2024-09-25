@@ -10,7 +10,7 @@
       - "--backend=http://host.containers.internal:8080"
 
 - name: Running the backend application
-  containers.podman.podman_container:
+  docker_container:
     name: backend
     recreate: true
     auto_remove: true
