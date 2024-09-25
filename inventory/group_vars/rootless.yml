@@ -3,3 +3,10 @@ ansible_user: runner
 link_path: /home/runner/.local/share/skupper/namespaces/west/runtime/link
 ce_commands:
   - systemctl --user enable --now podman.socket
+matrix:
+  - { command: "bootstrap", platform: "podman" }
+  - { command: "bootstrap", platform: "docker" }
+  - { command: "bootstrap", platform: "systemd" }
+  - { command: "bootstrap.sh", platform: "podman" }
+  - { command: "bootstrap.sh", platform: "docker" }
+  - { command: "bootstrap.sh", platform: "systemd" }
