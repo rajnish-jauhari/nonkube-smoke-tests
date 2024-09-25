@@ -21,8 +21,6 @@ jobs:
     steps:
       - uses: ansible/ansible-lint@main
         name: Run ansible-lint
-        with:
-          args: ".ansible-lint"
       - uses: actions/checkout@v4
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
