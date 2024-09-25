@@ -10,93 +10,121 @@ The execution is mean to cover the following matrix:
 | bootstrap | fedora39 | rootless | podman |
 | bootstrap | fedora39 | rootless | docker |
 | bootstrap | fedora39 | rootless | systemd |
-| bootstrap | fedora39 | root | podman |
 | bootstrap | fedora39 | root | docker |
 | bootstrap | fedora39 | root | systemd |
 | bootstrap | rhel9 | rootless | podman |
 | bootstrap | rhel9 | rootless | docker |
 | bootstrap | rhel9 | rootless | systemd |
-| bootstrap | rhel9 | root | podman |
 | bootstrap | rhel9 | root | docker |
 | bootstrap | rhel9 | root | systemd |
 | bootstrap | ubuntu2304 | rootless | podman |
 | bootstrap | ubuntu2304 | rootless | docker |
 | bootstrap | ubuntu2304 | rootless | systemd |
-| bootstrap | ubuntu2304 | root | podman |
 | bootstrap | ubuntu2304 | root | docker |
 | bootstrap | ubuntu2304 | root | systemd |
 | bootstrap.sh | fedora39 | rootless | podman |
 | bootstrap.sh | fedora39 | rootless | docker |
 | bootstrap.sh | fedora39 | rootless | systemd |
-| bootstrap.sh | fedora39 | root | podman |
 | bootstrap.sh | fedora39 | root | docker |
 | bootstrap.sh | fedora39 | root | systemd |
 | bootstrap.sh | rhel9 | rootless | podman |
 | bootstrap.sh | rhel9 | rootless | docker |
 | bootstrap.sh | rhel9 | rootless | systemd |
-| bootstrap.sh | rhel9 | root | podman |
 | bootstrap.sh | rhel9 | root | docker |
 | bootstrap.sh | rhel9 | root | systemd |
 | bootstrap.sh | ubuntu2304 | rootless | podman |
 | bootstrap.sh | ubuntu2304 | rootless | docker |
 | bootstrap.sh | ubuntu2304 | rootless | systemd |
-| bootstrap.sh | ubuntu2304 | root | podman |
 | bootstrap.sh | ubuntu2304 | root | docker |
 | bootstrap.sh | ubuntu2304 | root | systemd |
 
-
 **Notes:**
 
-* The bootstrap binary must be built locally and placed under the following
+* The bootstrap binary and shell script must be built locally and placed under the following
   directory before the playbooks can be executed:
   `collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/run/files/commands/`
+
+* The remove.sh shell script must be placed under the following
+  directory before the playbooks can be executed:
+  `collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/cleanup/files/commands/`
 
 * All hosts must be updated accordingly under `inventory/hosts.yml`
 
 * The participant hosts must have the following tools installed and ready to use:
-  * Podman
+  * Podman (does not run in rootful mode in CI as there are some issues managing podman containers using sudo)
   * Docker (non root user must have permission to manage containers)
   * Skupper router (built from sources or installed using RPM)
   * Your user must be able to log in as both root and non root user against all hosts
 
 ## Included content/ Directory Structure
 
-The directory structure follows best practices recommended by the Ansible community. Feel free to customize this template according to your specific project requirements.
-
 ```
- ansible-project/
- |── .devcontainer/
- |    └── docker/
- |        └── devcontainer.json
- |    └── podman/
- |        └── devcontainer.json
- |    └── devcontainer.json
- |── .github/
- |    └── workflows/
- |        └── tests.yml
- |    └── ansible-code-bot.yml
- |── .vscode/
- |    └── extensions.json
- |── collections/
- |   └── requirements.yml
- |   └── ansible_collections/
- |       └── project_org/
- |           └── project_repo/
- |               └── README.md
- |               └── roles/sample_role/
- |                         └── README.md
- |                         └── tasks/main.yml
- |── inventory/
- |   └── groups_vars/
- |   └── host_vars/
- |   └── hosts.yml
- |── ansible-navigator.yml
- |── ansible.cfg
- |── devfile.yaml
- |── linux_playbook.yml
- |── network_playbook.yml
- |── README.md
- |── site.yml
+.
+├── ansible.cfg
+├── ansible-navigator.log
+├── ansible-navigator.yml
+├── collections
+│   ├── ansible_collections
+│   │   └── fgiorgetti
+│   │       └── nonkube_smoke_tests
+│   │           ├── README.md
+│   │           └── roles
+│   │               ├── cleanup
+│   │               │   ├── files
+│   │               │   │   └── commands
+│   │               │   │       └── remove.sh
+│   │               │   └── tasks
+│   │               │       ├── customresources-cleanup.yml
+│   │               │       ├── main.yml
+│   │               │       ├── remove.yml
+│   │               │       └── workloads-cleanup.yml
+│   │               └── run
+│   │                   ├── files
+│   │                   │   ├── commands
+│   │                   │   │   ├── bootstrap
+│   │                   │   │   └── bootstrap.sh
+│   │                   │   └── hello-world
+│   │                   │       ├── east
+│   │                   │       │   ├── connector.yaml
+│   │                   │       │   ├── link-go-west.yaml
+│   │                   │       │   └── site.yaml
+│   │                   │       └── west
+│   │                   │           ├── listener.yaml
+│   │                   │           ├── routeraccess.yaml
+│   │                   │           └── site.yaml
+│   │                   ├── README.md
+│   │                   └── tasks
+│   │                       ├── bootstrap.yml
+│   │                       ├── containerengine.yml
+│   │                       ├── customresources.yml
+│   │                       ├── main.yml
+│   │                       ├── validate.yml
+│   │                       └── workloads-setup.yml
+│   └── requirements.yml
+├── devfile.yaml
+├── inventory
+│   ├── group_vars
+│   │   ├── all.yml
+│   │   ├── rootful.yml
+│   │   └── rootless.yml
+│   ├── hosts.yml
+│   └── host_vars
+│       └── ci.yml
+├── inventory-local
+│   ├── group_vars
+│   │   ├── all.yml
+│   │   ├── rootful.yml
+│   │   └── rootless.yml
+│   ├── hosts.yml
+│   └── host_vars
+│       ├── fedora.yml
+│       ├── rhel.yml
+│       └── ubuntu.yml
+├── README.md
+├── smoke_tests_cleanup.yml
+├── smoke_tests_rootful.yml
+├── smoke_tests_rootless.yml
+└── smoke_tests.yml
 ```
 
 ## Compatible with Ansible-lint
