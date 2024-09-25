@@ -19,7 +19,7 @@ jobs:
     name: Smoke Tests
     runs-on: ubuntu-24.04
     steps:
-      - uses: ansible/ansible-lint@main
+      - uses: ansible/ansible-lint-action@main
         name: Run ansible-lint
       - uses: actions/checkout@v4
       - name: Builds and installs the skupper-router
