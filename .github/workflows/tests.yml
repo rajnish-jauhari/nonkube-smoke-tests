@@ -13,16 +13,6 @@ on:  # yamllint disable-line rule:truthy
     - cron: '0 0 * * *'
 
 jobs:
-  ansible-lint:
-    name: Ansible lint
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: ansible/ansible-lint@main
-        name: Run ansible-lint
-        with:
-          working_directory: "./"
-          requirements_file: "./.github/scripts/requirements.yml"
-
   smoke-tests:
     name: Smoke Tests
     runs-on: ubuntu-24.04
@@ -30,6 +20,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ansible/ansible-lint@main
         name: Run ansible-lint
+        with:
+          working_directory: "../"
+          requirements_file: "./.github/scripts/requirements.yml"
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
       - name: Builds and installs the bootstrap code
