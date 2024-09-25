@@ -1,4 +1,7 @@
+
 # Skupper V2 nonkube smoke tests Ansible Project
+
+[![CI](https://github.com/fgiorgetti/nonkube-smoke-tests/actions/workflows/tests.yml/badge.svg)](https://github.com/fgiorgetti/nonkube-smoke-tests/actions/workflows/tests.yml)
 
 Skupper V2 nonkube smoke tests using Ansible.
 Runs the hello-world example using only nonkube platforms.
