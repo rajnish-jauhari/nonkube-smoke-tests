@@ -13,6 +13,14 @@ on:  # yamllint disable-line rule:truthy
     - cron: '0 0 * * *'
 
 jobs:
+  ansible-lint:
+    name: Ansible lint
+    steps:
+      - uses: ansible/ansible-lint@main
+        name: Run ansible-lint
+        with:
+          requirements_file: "./.github/scripts/requirements.yml"
+
   smoke-tests:
     name: Smoke Tests
     runs-on: ubuntu-24.04
