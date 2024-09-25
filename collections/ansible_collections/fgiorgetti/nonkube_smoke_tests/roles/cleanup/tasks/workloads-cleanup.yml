@@ -1,9 +1,9 @@
 - name: Stop and remove the frontend application
-  containers.podman.podman_container:
+  docker_container:
     name: frontend
     state: absent
 
 - name: Stop and remove the backend application
-  containers.podman.podman_container:
+  docker_container:
     name: backend
     state: absent

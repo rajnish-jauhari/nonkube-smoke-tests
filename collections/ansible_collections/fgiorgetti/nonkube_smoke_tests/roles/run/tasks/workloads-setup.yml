@@ -1,9 +1,9 @@
 - name: Running the frontend application
-  containers.podman.podman_container:
+  docker_container:
     name: frontend
     recreate: true
-    rm: true
-    ports:
+    auto_remove: true
+    published_ports:
       - "127.0.0.1:7070:8080"
     image: quay.io/skupper/hello-world-frontend
     command:
@@ -13,7 +13,7 @@
   containers.podman.podman_container:
     name: backend
     recreate: true
-    rm: true
-    ports:
+    auto_remove: true
+    published_ports:
       - "127.0.0.1:9090:8080"
     image: quay.io/skupper/hello-world-backend
