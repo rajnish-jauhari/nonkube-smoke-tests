@@ -1,6 +1,6 @@
 ---
 ansible_user: runner
-link_path: /home/runner/.local/share/skupper/namespaces/west/runtime/link
+link_path: /home/runner/.local/share/skupper/namespaces/west/runtime/links
 ce_commands:
   - systemctl --user enable --now podman.socket
 matrix:

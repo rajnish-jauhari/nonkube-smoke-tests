@@ -2,4 +2,3 @@
   ansible.builtin.file:
     path: hello-world
     state: absent
-  become: true

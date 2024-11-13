@@ -1,6 +1,6 @@
 ---
 ansible_user: root
-link_path: /usr/local/share/skupper/namespaces/west/runtime/link
+link_path: /usr/local/share/skupper/namespaces/west/runtime/links
 ce_commands:
   - systemctl enable --now podman.socket
   - systemctl enable --now docker.socket
