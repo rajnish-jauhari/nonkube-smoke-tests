@@ -23,12 +23,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Debug
-        run: |
-          pwd
-          ls -l
-          find ./ -type d
-          exit 1
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
       - name: Builds and installs the bootstrap code
