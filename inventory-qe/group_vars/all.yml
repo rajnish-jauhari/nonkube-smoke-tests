@@ -1,0 +1,10 @@
+---
+matrix:
+  - { command: "bootstrap", platform: "podman" }
+  - { command: "bootstrap", platform: "docker" }
+#  - { command: "bootstrap", platform: "systemd" }
+  - { command: "bootstrap.sh", platform: "podman" }
+  - { command: "bootstrap.sh", platform: "docker" }
+#  - { command: "bootstrap.sh", platform: "systemd" }
+docker_host: unix:///run/docker.sock
+ansible_host: 10.0.134.35
