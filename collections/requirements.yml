@@ -9,17 +9,7 @@ collections:
   - name: ansible.utils
     version: 4.0.0
 
-  - name: cisco.ios
-
-  - name: https://github.com/redhat-cop/network.backup
-    type: git
-
   - name: community.docker
 
   - name: containers.podman
     version: 1.15.4
-
-  # TO-DO: User's own collections can also be specified as mention below.
-  # - name: my_organization.my_collection
-  #   version: 1.2.3
-  #   source: https://github.com/my_organization/my_collection.git
