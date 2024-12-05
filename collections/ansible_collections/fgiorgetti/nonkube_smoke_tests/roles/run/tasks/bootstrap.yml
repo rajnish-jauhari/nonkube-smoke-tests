@@ -4,12 +4,28 @@
     dest: hello-world/
     mode: preserve
 
+- name: Create input resources folder
+  ansible.builtin.file:
+    path: "{{ skupper_home + '/namespaces/' + item + '/input/resources' }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "east"
+    - "west"
+
+- name: Copy custom resources to respective namespaces
+  ansible.builtin.copy:
+    src: "hello-world/{{ item }}/"
+    dest: "{{ skupper_home + '/namespaces/' + item + '/input/resources' }}"
+    mode: preserve
+  loop:
+    - "east"
+    - "west"
+
 - name: Bootstrap west site using {{ run_command + ' with ' + run_platform }}
   ansible.builtin.command:
     argv:
       - "hello-world/{{ run_command }}"
-      - "-p"
-      - "./hello-world/west"
       - "-n"
       - "west"
   environment:
@@ -19,23 +35,21 @@
 
 - name: Copying link to east site
   ansible.builtin.copy:
-    src: "{{ link_path }}/link-go-west-127.0.0.1.yaml"
-    dest: hello-world/east/
+    src: "{{ skupper_home }}/namespaces/west/runtime/links/link-go-west-127.0.0.1.yaml"
+    dest: "{{ skupper_home }}/namespaces/east/input/resources/link-go-west.yaml"
     mode: preserve
     remote_src: true
 
 - name: Update namespace in east link to west
   ansible.builtin.replace:
-    path: hello-world/east/link-go-west.yaml
-    regexp: 'namespace: west'
-    replace: 'namespace: east'
+    path: "{{ skupper_home }}/namespaces/east/input/resources/link-go-west.yaml"
+    regexp: '^  name: link-go-west'
+    replace: '  name: link-go-west\n  namespace: east'
 
 - name: Bootstrap east site using {{ run_command + ' with ' + run_platform }}
   ansible.builtin.command:
     argv:
       - "hello-world/{{ run_command }}"
-      - "-p"
-      - "./hello-world/east"
       - "-n"
       - "east"
   environment:

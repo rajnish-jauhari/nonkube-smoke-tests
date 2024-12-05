@@ -2,6 +2,5 @@
   ansible.builtin.copy:
     src: hello-world
     dest: ./
-    owner: "{{ ansible_user }}"
-    mode: preserve
+    mode: '0644'
     force: true
