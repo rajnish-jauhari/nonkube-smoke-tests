@@ -12,7 +12,7 @@
 
 - name: Removing Skupper sites
   ansible.builtin.command:
-    argv: "{{ cleanup_command + [ ns ] }}"
+    argv: "{{ cleanup_command + [ns] }}"
     chdir: "hello-world"
   environment:
     SKUPPER_PLATFORM: "podman"
