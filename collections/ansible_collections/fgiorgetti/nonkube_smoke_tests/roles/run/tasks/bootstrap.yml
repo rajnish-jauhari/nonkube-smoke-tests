@@ -4,14 +4,12 @@
     dest: hello-world/
     remote_src: true
     mode: '0755'
-  when: run_command == 'skupper system setup'
 
 - name: Download bootstrap.sh
   ansible.builtin.get_url:
     url: "{{ run_bootstrap_url }}"
     dest: hello-world/
     mode: '0755'
-  when: run_command == 'bootstrap.sh'
 
 - name: Create input resources folder
   ansible.builtin.file:
@@ -31,12 +29,10 @@
     - "east"
     - "west"
 
-- name: Bootstrap west site using {{ run_command + ' with ' + run_platform }}
+- name: Bootstrap west site using {{ run_command + [' with ', run_platform] }}
   ansible.builtin.command:
-    argv:
-      - "hello-world/{{ run_command }}"
-      - "-n"
-      - "west"
+    argv: "{{ run_command + ['-n', 'west'] }}"
+    chdir: "hello-world"
   environment:
     SKUPPER_PLATFORM: "{{ run_platform }}"
   register: _bootstrap
@@ -55,12 +51,10 @@
     regexp: '^  name: link-go-west'
     replace: '  name: link-go-west\n  namespace: east'
 
-- name: Bootstrap east site using {{ run_command + ' with ' + run_platform }}
+- name: Bootstrap east site using {{ run_command + [' with ', run_platform] }}
   ansible.builtin.command:
-    argv:
-      - "hello-world/{{ run_command }}"
-      - "-n"
-      - "east"
+    argv: "{{ run_command + ['-n', 'east'] }}"
+    chdir: "hello-world"
   environment:
     SKUPPER_PLATFORM: "{{ run_platform }}"
   register: _bootstrap

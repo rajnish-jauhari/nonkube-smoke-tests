@@ -5,8 +5,6 @@
     - name: Cleanup rootless smoke tests
       ansible.builtin.include_role:
         name: fgiorgetti.nonkube_smoke_tests.cleanup
-      vars:
-        run_remove: "{{ item.remove }}"
       tags: [always]
 
 - name: Cleanup rootful smoke tests
@@ -15,6 +13,4 @@
     - name: Cleanup rootful smoke tests
       ansible.builtin.include_role:
         name: fgiorgetti.nonkube_smoke_tests.cleanup
-      vars:
-        run_remove: "{{ item.remove }}"
       tags: [always]
