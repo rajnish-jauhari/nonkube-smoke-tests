@@ -2,31 +2,35 @@
 - name: Nonkube smoke test as non root
   hosts: rootless
   tasks:
-    - name: Run rootless smoke tests
-      ansible.builtin.include_role:
-        name: fgiorgetti.nonkube_smoke_tests.run
-      vars:
-        run_command: "{{ item.command }}"
-        cleanup_command: "{{ item.remove }}"
-        run_platform: "{{ item.platform }}"
-      loop: "{{ matrix }}"
-    - name: Cleanup rootless smoke tests
-      ansible.builtin.include_role:
-        name: fgiorgetti.nonkube_smoke_tests.cleanup
-      tags: [always]
+    - name: Rootless smoke tests tasks
+      block:
+        - name: Run rootless smoke tests
+          ansible.builtin.include_role:
+            name: fgiorgetti.nonkube_smoke_tests.run
+          vars:
+            run_command: "{{ item.command }}"
+            cleanup_command: "{{ item.remove }}"
+            run_platform: "{{ item.platform }}"
+          loop: "{{ matrix }}"
+      rescue:
+        - name: Cleanup rootless smoke tests
+          ansible.builtin.include_role:
+            name: fgiorgetti.nonkube_smoke_tests.cleanup
 
 - name: Nonkube smoke test as root
   hosts: rootful
   tasks:
-    - name: Run rootful smoke tests
-      ansible.builtin.include_role:
-        name: fgiorgetti.nonkube_smoke_tests.run
-      vars:
-        run_command: "{{ item.command }}"
-        cleanup_command: "{{ item.remove }}"
-        run_platform: "{{ item.platform }}"
-      loop: "{{ matrix }}"
-    - name: Cleanup rootful smoke tests
-      ansible.builtin.include_role:
-        name: fgiorgetti.nonkube_smoke_tests.cleanup
-      tags: [always]
+    - name: Rootful smoke tests tasks
+      block:
+        - name: Run rootful smoke tests
+          ansible.builtin.include_role:
+            name: fgiorgetti.nonkube_smoke_tests.run
+          vars:
+            run_command: "{{ item.command }}"
+            cleanup_command: "{{ item.remove }}"
+            run_platform: "{{ item.platform }}"
+          loop: "{{ matrix }}"
+      rescue:
+        - name: Cleanup rootful smoke tests
+          ansible.builtin.include_role:
+            name: fgiorgetti.nonkube_smoke_tests.cleanup
