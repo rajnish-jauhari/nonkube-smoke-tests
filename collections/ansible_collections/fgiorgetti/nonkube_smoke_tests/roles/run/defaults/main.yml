@@ -1,0 +1,4 @@
+---
+run_cli_url: https://github.com/skupperproject/skupper/releases/download/2.0.0-preview-2/skupper-cli-2.0.0-preview-2-linux-amd64.tgz
+run_bootstrap_url: https://raw.githubusercontent.com/skupperproject/skupper/refs/heads/v2/cmd/bootstrap/bootstrap.sh
+run_remove_url: https://raw.githubusercontent.com/skupperproject/skupper/refs/heads/v2/cmd/bootstrap/remove.sh

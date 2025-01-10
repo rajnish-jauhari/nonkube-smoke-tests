@@ -1,8 +1,17 @@
-- name: Copying bootstrap command
-  ansible.builtin.copy:
-    src: commands/{{ run_command }}
+- name: Download and unarchive the CLI
+  ansible.builtin.unarchive:
+    src: "{{ run_cli_url }}"
     dest: hello-world/
-    mode: preserve
+    remote_src: true
+    mode: '0755'
+  when: run_command == 'skupper system setup'
+
+- name: Download bootstrap.sh
+  ansible.builtin.get_url:
+    url: "{{ run_bootstrap_url }}"
+    dest: hello-world/
+    mode: '0755'
+  when: run_command == 'bootstrap.sh'
 
 - name: Create input resources folder
   ansible.builtin.file:

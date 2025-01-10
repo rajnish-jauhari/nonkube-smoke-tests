@@ -1,13 +1,14 @@
-- name: Copying remove.sh command
-  ansible.builtin.copy:
-    src: commands/remove.sh
+- name: Download remove.sh
+  ansible.builtin.get_url:
+    url: "{{ run_remove_url }}"
     dest: hello-world/
-    mode: preserve
+    mode: '0755'
+  when: run_remove == 'remove.sh'
 
 - name: Removing Skupper sites
   ansible.builtin.command:
     argv:
-      - "hello-world/remove.sh"
+      - "hello-world/{{ run_remove }}"
       - "{{ item }}"
   loop:
     - "east"

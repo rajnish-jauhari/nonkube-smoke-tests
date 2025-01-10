@@ -5,7 +5,7 @@ ce_commands:
   - systemctl enable --now docker.socket
 #  - systemctl enable --now podman.socket
 matrix:
-  - { command: "bootstrap", platform: "docker" }
-  - { command: "bootstrap", platform: "systemd" }
-  - { command: "bootstrap.sh", platform: "docker" }
-  - { command: "bootstrap.sh", platform: "systemd" }
+  - { command: "skupper system setup", remove: "skupper system teardown -n", platform: "docker" }
+  - { command: "skupper system setup", remove: "skupper system teardown -n", platform: "systemd" }
+  - { command: "bootstrap.sh", remove: "remove.sh", platform: "docker" }
+  - { command: "bootstrap.sh", remove: "remove.sh", platform: "systemd" }
