@@ -25,7 +25,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Builds and installs the skupper-router
         uses: ./.github/actions/build-router
-      - name: Builds and installs the bootstrap code
-        uses: ./.github/actions/build-bootstrap
       - name: Runs the Smoke Tests
         uses: ./.github/actions/run-smoke-test

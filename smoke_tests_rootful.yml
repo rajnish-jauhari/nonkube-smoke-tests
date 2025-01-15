@@ -7,6 +7,7 @@
         name: fgiorgetti.nonkube_smoke_tests.run
       vars:
         run_command: "{{ item.command }}"
+        cleanup_command: "{{ item.remove }}"
         run_platform: "{{ item.platform }}"
       loop: "{{ matrix }}"
     - name: Cleanup rootful smoke tests

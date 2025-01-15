@@ -10,24 +10,24 @@ The execution is meant to cover the following matrix when running locally (using
 
 |Command     |OS        |User    |Platform|
 |------------|----------|--------|--------|
-|bootstrap   |fedora39  |rootless|podman  |
-|bootstrap   |fedora39  |rootless|docker  |
-|bootstrap   |fedora39  |rootless|systemd |
-|bootstrap   |fedora39  |root    |podman  |
-|bootstrap   |fedora39  |root    |docker  |
-|bootstrap   |fedora39  |root    |systemd |
-|bootstrap   |rhel9     |rootless|podman  |
-|bootstrap   |rhel9     |rootless|docker  |
-|bootstrap   |rhel9     |rootless|systemd |
-|bootstrap   |rhel9     |root    |podman  |
-|bootstrap   |rhel9     |root    |docker  |
-|bootstrap   |rhel9     |root    |systemd |
-|bootstrap   |ubuntu2404|rootless|podman  |
-|bootstrap   |ubuntu2404|rootless|docker  |
-|bootstrap   |ubuntu2404|rootless|systemd |
-|bootstrap   |ubuntu2404|root    |podman  |
-|bootstrap   |ubuntu2404|root    |docker  |
-|bootstrap   |ubuntu2404|root    |systemd |
+|skupper     |fedora39  |rootless|podman  |
+|skupper     |fedora39  |rootless|docker  |
+|skupper     |fedora39  |rootless|systemd |
+|skupper     |fedora39  |root    |podman  |
+|skupper     |fedora39  |root    |docker  |
+|skupper     |fedora39  |root    |systemd |
+|skupper     |rhel9     |rootless|podman  |
+|skupper     |rhel9     |rootless|docker  |
+|skupper     |rhel9     |rootless|systemd |
+|skupper     |rhel9     |root    |podman  |
+|skupper     |rhel9     |root    |docker  |
+|skupper     |rhel9     |root    |systemd |
+|skupper     |ubuntu2404|rootless|podman  |
+|skupper     |ubuntu2404|rootless|docker  |
+|skupper     |ubuntu2404|rootless|systemd |
+|skupper     |ubuntu2404|root    |podman  |
+|skupper     |ubuntu2404|root    |docker  |
+|skupper     |ubuntu2404|root    |systemd |
 |bootstrap.sh|fedora39  |rootless|podman  |
 |bootstrap.sh|fedora39  |rootless|docker  |
 |bootstrap.sh|fedora39  |rootless|systemd |
@@ -51,22 +51,14 @@ Through the CI a smaller matrix (using inventory):
 
 |Commands    |OS        |User    |Platform|
 |------------|----------|--------|--------|
-|bootstrap   |ubuntu2404|rootless|podman  |
-|bootstrap   |ubuntu2404|rootless|docker  |
-|bootstrap   |ubuntu2404|rootless|systemd |
+|skupper     |ubuntu2404|rootless|podman  |
+|skupper     |ubuntu2404|rootless|docker  |
+|skupper     |ubuntu2404|rootless|systemd |
 |bootstrap.sh|ubuntu2404|rootless|podman  |
 |bootstrap.sh|ubuntu2404|rootless|docker  |
 |bootstrap.sh|ubuntu2404|rootless|systemd |
 
 **Notes:**
-
-* The bootstrap binary and shell script must be built locally and placed under the following
-  directory before the playbooks can be executed:
-  `collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/run/files/commands/`
-
-* The remove.sh shell script must be placed under the following
-  directory before the playbooks can be executed:
-  `collections/ansible_collections/fgiorgetti/nonkube_smoke_tests/roles/cleanup/files/commands/`
 
 * All hosts must be updated accordingly under `inventory/hosts.yml`
 

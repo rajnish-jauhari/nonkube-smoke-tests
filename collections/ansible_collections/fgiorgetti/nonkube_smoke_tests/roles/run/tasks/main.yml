@@ -1,6 +1,6 @@
-- name: Starting smoke test using {{ run_command + ' with ' + run_platform }}
+- name: Starting smoke test using {{ run_command + [' with ', run_platform] }}
   ansible.builtin.debug:
-    msg: "Starting smoke test using {{ run_command }} with {{ run_platform }}"
+    msg: "Starting smoke test using {{ run_command + [' with ', run_platform] }}"
 
 - name: Custom resources
   ansible.builtin.import_tasks: customresources.yml

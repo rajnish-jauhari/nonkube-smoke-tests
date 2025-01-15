@@ -1,17 +1,26 @@
-- name: Copying remove.sh command
-  ansible.builtin.copy:
-    src: commands/remove.sh
+- name: Ensure hello-world path exists
+  ansible.builtin.file:
+    state: directory
     dest: hello-world/
-    mode: preserve
+    mode: '0755'
+
+- name: Download remove.sh
+  ansible.builtin.get_url:
+    url: "{{ cleanup_command_url }}"
+    dest: hello-world/
+    mode: '0755'
 
 - name: Removing Skupper sites
   ansible.builtin.command:
-    argv:
-      - "hello-world/remove.sh"
-      - "{{ item }}"
+    argv: "{{ cleanup_command + [ns] }}"
+    chdir: "hello-world"
+  environment:
+    SKUPPER_PLATFORM: "podman"
   loop:
     - "east"
     - "west"
+  loop_control:
+    loop_var: ns
   retries: 3
   delay: 5
   register: _remove
