@@ -15,16 +15,14 @@ on:  # yamllint disable-line rule:truthy
     - cron: '0 0 * * *'
 
 jobs:
-  ansible-lint:
-    name: Ansible lint
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
-        with:
-          path: "collections/ansible_collections/fgiorgetti"
-      - uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
-        with:
-          path: "./*.yaml"
+  ansible-lint-collection:
+  uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
+  with:
+    path: "collections/ansible_collections/fgiorgetti"
+  ansible-lint-playbooks:
+  uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
+  with:
+    path: "collections/ansible_collections/fgiorgetti"
   smoke-tests:
     name: Smoke Tests
     runs-on: ubuntu-24.04
