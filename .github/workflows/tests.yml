@@ -22,7 +22,7 @@ jobs:
   ansible-lint-playbooks:
   uses: ansible/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
   with:
-    path: "collections/ansible_collections/fgiorgetti"
+    path: "./*.yaml"
   smoke-tests:
     name: Smoke Tests
     runs-on: ubuntu-24.04
