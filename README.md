@@ -12,40 +12,40 @@ The execution is meant to cover the following matrix when running locally (using
 |------------|----------|--------|--------|
 |skupper     |fedora39  |rootless|podman  |
 |skupper     |fedora39  |rootless|docker  |
-|skupper     |fedora39  |rootless|systemd |
+|skupper     |fedora39  |rootless|linux   |
 |skupper     |fedora39  |root    |podman  |
 |skupper     |fedora39  |root    |docker  |
-|skupper     |fedora39  |root    |systemd |
+|skupper     |fedora39  |root    |linux   |
 |skupper     |rhel9     |rootless|podman  |
 |skupper     |rhel9     |rootless|docker  |
-|skupper     |rhel9     |rootless|systemd |
+|skupper     |rhel9     |rootless|linux   |
 |skupper     |rhel9     |root    |podman  |
 |skupper     |rhel9     |root    |docker  |
-|skupper     |rhel9     |root    |systemd |
+|skupper     |rhel9     |root    |linux   |
 |skupper     |ubuntu2404|rootless|podman  |
 |skupper     |ubuntu2404|rootless|docker  |
-|skupper     |ubuntu2404|rootless|systemd |
+|skupper     |ubuntu2404|rootless|linux   |
 |skupper     |ubuntu2404|root    |podman  |
 |skupper     |ubuntu2404|root    |docker  |
-|skupper     |ubuntu2404|root    |systemd |
+|skupper     |ubuntu2404|root    |linux   |
 |bootstrap.sh|fedora39  |rootless|podman  |
 |bootstrap.sh|fedora39  |rootless|docker  |
-|bootstrap.sh|fedora39  |rootless|systemd |
+|bootstrap.sh|fedora39  |rootless|linux   |
 |bootstrap.sh|fedora39  |root    |podman  |
 |bootstrap.sh|fedora39  |root    |docker  |
-|bootstrap.sh|fedora39  |root    |systemd |
+|bootstrap.sh|fedora39  |root    |linux   |
 |bootstrap.sh|rhel9     |rootless|podman  |
 |bootstrap.sh|rhel9     |rootless|docker  |
-|bootstrap.sh|rhel9     |rootless|systemd |
+|bootstrap.sh|rhel9     |rootless|linux   |
 |bootstrap.sh|rhel9     |root    |podman  |
 |bootstrap.sh|rhel9     |root    |docker  |
-|bootstrap.sh|rhel9     |root    |systemd |
+|bootstrap.sh|rhel9     |root    |linux   |
 |bootstrap.sh|ubuntu2404|rootless|podman  |
 |bootstrap.sh|ubuntu2404|rootless|docker  |
-|bootstrap.sh|ubuntu2404|rootless|systemd |
+|bootstrap.sh|ubuntu2404|rootless|linux   |
 |bootstrap.sh|ubuntu2404|root    |podman  |
 |bootstrap.sh|ubuntu2404|root    |docker  |
-|bootstrap.sh|ubuntu2404|root    |systemd |
+|bootstrap.sh|ubuntu2404|root    |linux   |
 
 Through the CI a smaller matrix (using inventory):
 
@@ -53,10 +53,10 @@ Through the CI a smaller matrix (using inventory):
 |------------|----------|--------|--------|
 |skupper     |ubuntu2404|rootless|podman  |
 |skupper     |ubuntu2404|rootless|docker  |
-|skupper     |ubuntu2404|rootless|systemd |
+|skupper     |ubuntu2404|rootless|linux   |
 |bootstrap.sh|ubuntu2404|rootless|podman  |
 |bootstrap.sh|ubuntu2404|rootless|docker  |
-|bootstrap.sh|ubuntu2404|rootless|systemd |
+|bootstrap.sh|ubuntu2404|rootless|linux   |
 
 **Notes:**
 

@@ -1,4 +1,4 @@
 Commands=bootstrap,bootstrap.sh
 OS=ubuntu2404
 User=rootless
-Platform=podman,docker,systemd
+Platform=podman,docker,linux
