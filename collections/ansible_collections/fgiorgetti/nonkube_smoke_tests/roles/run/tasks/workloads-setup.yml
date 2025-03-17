@@ -5,7 +5,7 @@
     auto_remove: true
     published_ports:
       - "127.0.0.1:7070:8080"
-    image: quay.io/skupper/hello-world-frontend
+    image: quay.io/rhn-support-rjauhari/hello-world-frontend
     command:
       - "--backend=http://host.containers.internal:8080"
 
@@ -16,4 +16,4 @@
     auto_remove: true
     published_ports:
       - "127.0.0.1:9090:8080"
-    image: quay.io/skupper/hello-world-backend
+    image: quay.io/rhn-support-rjauhari/hello-world-backend
