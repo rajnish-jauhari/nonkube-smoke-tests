@@ -4,6 +4,7 @@
     dest: hello-world/
     remote_src: true
     mode: '0755'
+  when: not ('' == run_cli_url)
 
 - name: Download bootstrap.sh
   ansible.builtin.get_url:

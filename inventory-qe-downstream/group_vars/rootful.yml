@@ -1,0 +1,6 @@
+---
+ansible_user: root
+skupper_home: /var/lib/skupper
+ce_commands:
+  - systemctl enable --now podman.socket
+  - systemctl enable --now docker.socket
