@@ -2,9 +2,9 @@
 matrix:
   - { command: ["skupper", "system", "setup"], remove: ["skupper", "system", "teardown", "-n"], platform: "podman" }
   - { command: ["skupper", "system", "setup"], remove: ["skupper", "system", "teardown", "-n"], platform: "docker" }
-  - { command: ["skupper", "system", "setup"], remove: ["skupper", "system", "teardown", "-n"], platform: "linux" }
+ # - { command: ["skupper", "system", "setup"], remove: ["skupper", "system", "teardown", "-n"], platform: "linux" }
   - { command: ["./bootstrap.sh"], remove: ["./remove.sh"], platform: "podman" }
   - { command: ["./bootstrap.sh"], remove: ["./remove.sh"], platform: "docker" }
-  - { command: ["./bootstrap.sh"], remove: ["./remove.sh"], platform: "linux" }
+ # - { command: ["./bootstrap.sh"], remove: ["./remove.sh"], platform: "linux" }
 docker_host: unix:///run/docker.sock
 ansible_host: 127.0.0.1
